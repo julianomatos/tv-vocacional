@@ -1,0 +1,89 @@
+### POST - Inserir Novo Usuário: Ana Costa (Analista de Dados)
+POST http://localhost:3001/results
+Content-Type: application/json
+
+{
+  "id": "4",
+  "userName": "Ana Costa",
+  "userPhoto": "https://api.dicebear.com/7.x/avataaars/svg?seed=Ana",
+  "profession": "ANALISTA DE DADOS",
+  "description": "Profissional que coleta, limpa e interpreta grandes conjuntos de dados para identificar tendências, padrões e insights acionáveis, auxiliando na tomada de decisões estratégicas da empresa.",
+  "aiImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+  "salary": {
+    "junior": "R$4.500 a R$8.000",
+    "pleno": "R$8.000 a R$15.000",
+    "senior": "R$15.000 a R$25.000+"
+  },
+  "tags": [
+    "SQL",
+    "PYTHON",
+    "R",
+    "VISUALIZAÇÃO",
+    "ETL",
+    "MACHINE LEARNING",
+    "ESTATÍSTICA",
+    "INSIGHTS"
+  ],
+  "courseStartDate": "2025-02-09",
+  "createdAt": "2025-11-11T12:25:00Z"
+}
+
+### POST - Inserir Novo Usuário: Carlos Mendes (Eng. DevOps)
+POST http://localhost:3001/results
+Content-Type: application/json
+
+{
+  "id": "5",
+  "userName": "Carlos Mendes",
+  "userPhoto": "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
+  "profession": "ENGENHEIRO DE DEVOPS",
+  "description": "Responsável por unir desenvolvimento de software (Dev) e operações de TI (Ops). Automação de pipelines de CI/CD, gerenciamento de infraestrutura em nuvem e monitoramento de sistemas.",
+  "aiImage": "https://images.unsplash.com/photo-1628155990264-a0dc5c635b7e?w=800&q=80",
+  "salary": {
+    "junior": "R$5.000 a R$9.000",
+    "pleno": "R$9.000 a R$18.000",
+    "senior": "R$18.000 a R$30.000+"
+  },
+  "tags": [
+    "AWS",
+    "AZURE",
+    "DOCKER",
+    "KUBERNETES",
+    "CI/CD",
+    "AUTOMATION",
+    "INFRAESTRUTURA",
+    "MONITORAMENTO"
+  ],
+  "courseStartDate": "2025-02-09",
+  "createdAt": "2025-11-11T12:27:00Z"
+}
+
+### POST - Inserir Novo Usuário: Beatriz Lima (Cibersegurança)
+POST http://localhost:3001/results
+Content-Type: application/json
+
+{
+  "id": "6",
+  "userName": "Beatriz Lima",
+  "userPhoto": "https://api.dicebear.com/7.x/avataaars/svg?seed=Beatriz",
+  "profession": "ESPECIALISTA EM CIBERSEGURANÇA",
+  "description": "Focado em proteger sistemas, redes e dados contra ameaças digitais. Realiza testes de penetração, implementa políticas de segurança e monitora incidentes de risco.",
+  "aiImage": "https://images.unsplash.com/photo-1544605151-e0c3a2f7c0d7?w=800&q=80",
+  "salary": {
+    "junior": "R$4.000 a R$7.500",
+    "pleno": "R$7.500 a R$16.000",
+    "senior": "R$16.000 a R$28.000+"
+  },
+  "tags": [
+    "PEN TEST",
+    "FIREWALL",
+    "CRIPTOGRAFIA",
+    "CLOUD SECURITY",
+    "ISO 27001",
+    "DEFESA",
+    "ANÁLISE DE VULNERABILIDADE",
+    "INCIDENT RESPONSE"
+  ],
+  "courseStartDate": "2025-02-09",
+  "createdAt": "2025-11-11T12:29:00Z"
+}

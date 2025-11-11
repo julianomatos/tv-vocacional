@@ -1,0 +1,80 @@
+{
+  "results": [
+    {
+      "id": "1",
+      "userName": "João Silva",
+      "userPhoto": "https://api.dicebear.com/7.x/avataaars/svg?seed=Joao",
+      "profession": "GESTÃO DE PRODUTOS (PO/SM/GP)",
+      "description": "Profissional que colabora com equipes para planejar e organizar o desenvolvimento. É quem ajusta prioridades, escuta os clientes, analisa feedbacks/dados, define próximos passos e prepara apresentações para os líderes da empresa.",
+      "aiImage": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80",
+      "salary": {
+        "junior": "R$3.000 a R$6.000",
+        "pleno": "R$6.000 a R$12.000",
+        "senior": "R$12.000 a R$20.000+"
+      },
+      "tags": [
+        "ROADMAP",
+        "BACKLOG",
+        "FEEDBACK",
+        "DESENVOLVIMENTO ÁGIL",
+        "ALINHAMENTO",
+        "EQUIPE",
+        "ESTRATÉGIA",
+        "PRIORIDADE"
+      ],
+      "courseStartDate": "2025-02-09",
+      "createdAt": "2025-11-06T14:30:00Z"
+    },
+    {
+      "id": "2",
+      "userName": "Maria Santos",
+      "userPhoto": "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
+      "profession": "DESENVOLVIMENTO FULL STACK",
+      "description": "Profissional versátil que domina tanto o front-end quanto o back-end. Cria aplicações completas, desde a interface visual até a lógica de servidor e banco de dados.",
+      "aiImage": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80",
+      "salary": {
+        "junior": "R$4.000 a R$7.000",
+        "pleno": "R$7.000 a R$14.000",
+        "senior": "R$14.000 a R$25.000+"
+      },
+      "tags": [
+        "REACT",
+        "NODE.JS",
+        "API REST",
+        "BANCO DE DADOS",
+        "GIT",
+        "DEPLOY",
+        "FRONTEND",
+        "BACKEND"
+      ],
+      "courseStartDate": "2025-02-09",
+      "createdAt": "2025-11-06T14:32:00Z"
+    },
+    {
+      "id": "3",
+      "userName": "Pedro Oliveira",
+      "userPhoto": "https://api.dicebear.com/7.x/avataaars/svg?seed=Pedro",
+      "profession": "UX/UI DESIGNER",
+      "description": "Especialista em criar experiências digitais intuitivas e visualmente atraentes. Pesquisa necessidades dos usuários, desenha interfaces e testa protótipos para garantir a melhor experiência.",
+      "aiImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+      "salary": {
+        "junior": "R$3.500 a R$6.500",
+        "pleno": "R$6.500 a R$13.000",
+        "senior": "R$13.000 a R$22.000+"
+      },
+      "tags": [
+        "FIGMA",
+        "PROTOTIPAÇÃO",
+        "PESQUISA",
+        "USABILIDADE",
+        "DESIGN SYSTEM",
+        "WIREFRAME",
+        "INTERFACE",
+        "EXPERIÊNCIA"
+      ],
+      "courseStartDate": "2025-02-09",
+      "createdAt": "2025-11-06T14:35:00Z"
+    }
+   
+  ]
+}
