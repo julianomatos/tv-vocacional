@@ -11,7 +11,7 @@ interface ISalary {
  * Interface principal para o arquivo de dados do usuário/perfil.
  */
 export interface IUserProfile {
-  id: number;
+  id: string;
   userName: string;
   userPhoto: string;
   profession: string;
@@ -20,6 +20,15 @@ export interface IUserProfile {
   salary: ISalary;
   tags: string[];
   courseStartDate: string;
+  createdAt: string;
+  isNew?: boolean;
+}
+
+export interface IUserResponse {
+  id: string;
+  userName: string;
+  userPhoto: string;
+  profession: string;
   createdAt: string;
 }
 
