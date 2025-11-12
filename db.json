@@ -20,6 +20,27 @@
       "userPhoto": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
       "profession": "Programador Frontend",
       "createdAt": "2025-11-06T14:35:00Z"
+    },
+    {
+      "id": "4",
+      "userName": "Ana Costa",
+      "userPhoto": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+      "profession": "ANALISTA DE DADOS",
+      "createdAt": "2025-11-11T12:25:00Z"
+    },
+    {
+      "id": "5",
+      "userName": "Carlos Mendes",
+      "userPhoto": "https://images.unsplash.com/photo-1628155990264-a0dc5c635b7e?w=800&q=80",
+      "profession": "ENGENHEIRO DE DEVOPS",
+      "createdAt": "2025-11-11T12:27:00Z"
+    },
+    {
+      "id": "6",
+      "userName": "Beatriz Lima",
+      "userPhoto": "https://images.unsplash.com/photo-1544605151-e0c3a2f7c0d7?w=800&q=80",
+      "profession": "ESPECIALISTA EM CIBERSEGURANÇA",
+      "createdAt": "2025-11-11T12:29:00Z"
     }
   ]
 }

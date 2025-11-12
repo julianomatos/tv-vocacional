@@ -6,6 +6,7 @@ import { CalendarDays, Sparkles, Award } from 'lucide-react';
 import Image from 'next/image';
 import { generateMockData } from './utils/generateMockData';
 import { IUserProfile, IUserResponse } from './types/user';
+import { s } from 'framer-motion/client';
 
 
 
@@ -18,9 +19,17 @@ export default function TVDisplay() {
   const [shownNewIds, setShownNewIds] = useState<Set<string>>(new Set());
   const previousResultsRef = useRef<IUserProfile[]>([]);
 
-  // Buscar dados da API a cada 5 segundos
+  const [isPresentingNew, setIsPresentingNew] = useState(false);
+
+  // Buscar dados da API a cada 10 segundos
   useEffect(() => {
     const fetchResults = async () => {
+
+      // 🔒 Bloqueia busca se estiver apresentando novos
+      if (isPresentingNew) {
+        console.log('⏸️  Busca pausada - apresentando novos resultados');
+        return;
+      }
       try {
         const response = await fetch('http://localhost:3001/results');
         const data = await response.json();
@@ -44,6 +53,7 @@ export default function TVDisplay() {
         const newResults = enrichedData.filter((r: IUserProfile) => !previousIds.has(r.id));
 
         if (newResults.length > 0 && previousResultsRef.current.length > 0) {
+          setIsPresentingNew(true);
           // Marcar novos resultados
           const updatedData = enrichedData.map((r: IUserProfile) => ({
             ...r,
@@ -76,9 +86,9 @@ export default function TVDisplay() {
     };
 
     fetchResults();
-    const interval = setInterval(fetchResults, 5000);
+    const interval = setInterval(fetchResults, 10000);
     return () => clearInterval(interval);
-  }, [shownNewIds]);
+  }, [shownNewIds, isPresentingNew]);
 
   // Rotacionar entre os resultados com tempo diferenciado
   useEffect(() => {
@@ -86,7 +96,7 @@ export default function TVDisplay() {
 
     const current = results[currentIndex];
     const isNewResult = current?.isNew && !shownNewIds.has(current.id);
-    const displayTime = isNewResult ? 15000 : 5000;
+    const displayTime = isNewResult ? 15000 : 10000;
 
     const interval = setInterval(() => {
       // Marcar o atual como mostrado antes de avançar
@@ -95,15 +105,23 @@ export default function TVDisplay() {
       }
 
       // Avançar para o próximo
-      setCurrentIndex((prev) => (prev + 1) % results.length);
+      const nextIndex = (currentIndex + 1) % results.length;
+      setCurrentIndex(nextIndex);
+
+      // 🎯 Verifica se terminou de apresentar todos os novos
+      const hasMoreNew = results.some(r => r.isNew && !shownNewIds.has(r.id));
+      if (!hasMoreNew && isPresentingNew) {
+        console.log('✅ Finalizou apresentação de novos - retomando buscas');
+        setIsPresentingNew(false);
+      }
     }, displayTime);
 
     return () => clearInterval(interval);
-  }, [results.length, currentIndex]);
+  }, [results.length, currentIndex, isPresentingNew, shownNewIds]);
 
   if (isLoading || results.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-white text-2xl">Aguardando resultados...</p>
@@ -116,7 +134,7 @@ export default function TVDisplay() {
   const isCurrentNew = current?.isNew && !shownNewIds.has(current.id);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 p-6 overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-blue-900 to-slate-900 p-6 overflow-hidden">
       {/* Animação de Conquista */}
       <AnimatePresence>
         {showAchievement && (
@@ -129,7 +147,7 @@ export default function TVDisplay() {
             <motion.div
               initial={{ y: 50 }}
               animate={{ y: 0 }}
-              className="bg-gradient-to-br from-yellow-500 to-orange-500 rounded-3xl p-12 shadow-2xl border-4 border-yellow-300 relative overflow-hidden"
+              className="bg-linear-to-br from-yellow-500 to-orange-500 rounded-3xl p-12 shadow-2xl border-4 border-yellow-300 relative overflow-hidden"
             >
               {/* Confetes animados */}
               {[...Array(20)].map((_, i) => (
@@ -178,7 +196,7 @@ export default function TVDisplay() {
             animate={{ scale: 1, rotate: 0 }}
             className="absolute top-8 right-8 z-20"
           >
-            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl px-6 py-3 shadow-2xl border-2 border-yellow-300 flex items-center gap-2">
+            <div className="bg-linear-to-r from-yellow-400 to-orange-500 rounded-2xl px-6 py-3 shadow-2xl border-2 border-yellow-300 flex items-center gap-2">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
@@ -200,7 +218,7 @@ export default function TVDisplay() {
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-t-3xl p-5 shadow-2xl border-b border-slate-300"
+          className="bg-linear-to-r from-blue-600 to-blue-700 rounded-t-3xl p-5 shadow-2xl border-b border-slate-300"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
@@ -240,7 +258,7 @@ export default function TVDisplay() {
             transition={{ duration: 0.8 }}
             className="rounded-b-3xl overflow-hidden"
           >
-            <div className="grid grid-cols-2 gap-0 bg-gradient-to-br from-blue-900/50 to-slate-900/50">
+            <div className="grid grid-cols-2 gap-0 bg-linear-to-br from-blue-900/50 to-slate-900/50">
               {/* Coluna Esquerda - Imagem */}
               <div className="relative h-[640px] py-4 px-8">
                 <img
@@ -248,7 +266,7 @@ export default function TVDisplay() {
                   alt={current.userName}
                   className="w-full h-full object-cover rounded-2xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent rounded-2xl"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent rounded-2xl"></div>
                 <div className="absolute bottom-1 left-10 right-8">
                   <motion.div
                     initial={{ x: -50, opacity: 0 }}
@@ -276,7 +294,7 @@ export default function TVDisplay() {
                     initial={{ x: 50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.4 }}
-                    className="bg-gradient-to-r mx-5 my-2 from-blue-600 to-blue-700 rounded-2xl p-6 shadow-xl"
+                    className="bg-linear-to-r mx-5 my-2 from-blue-600 to-blue-700 rounded-2xl p-6 shadow-xl"
                   >
                     <div className="flex items-center justify-between">
                       <div>
